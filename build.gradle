@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        maven {
+            url 'http://mvn.dev.alipay.net:8080/artifactory/repo'
+        }
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+        maven {
+            url 'http://dl.bintray.com/jetbrains/intellij-plugin-service'
+        }
+    }
+    dependencies {
+        classpath "org.jetbrains.intellij.plugins:gradle-intellij-plugin:0.2.0-SNAPSHOT"
+    }
+}
+
+apply plugin: 'java'
+sourceSets {
+    main {
+        java.srcDirs 'src'
+        resources.srcDirs 'resources'
+    }
+}
+
+apply plugin: 'org.jetbrains.intellij'
+intellij {
+    version 'IC-143.2370.31'
+    pluginName 'glacier.idea_plugin_dev'
+}
+
+version '0.0.1'

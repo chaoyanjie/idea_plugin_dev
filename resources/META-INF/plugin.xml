@@ -1,0 +1,63 @@
+<idea-plugin version="2">
+    <id>glacier.idea_plugin_dev</id>
+    <name>idea_plugin_dev</name>
+    <version>1.0</version>
+    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="141.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Ping"
+                    anchor="bottom"
+                    icon="/icons/ping.png"
+                    canCloseContents="true"
+                    factoryClass="glacier.toolwindow.PingToolWindowFactory"/>
+    </extensions>
+
+    <actions>
+        <group id="Plugin.Demo.Ping.Popup" popup="true">
+            <action class="glacier.popups.StopPingMenuItem" id="Plugin.Demo.Ping.Stop" text="Stop"
+                    description="Stop Ping">
+                <add-to-group group-id="ConsoleEditorPopupMenu" anchor="first"/>
+            </action>
+
+            <action id="Plugin.Demo.Ping" class="glacier.action.PingTool" text="Ping tool" description="Plugin Demo">
+                <add-to-group group-id="HelpMenu" relative-to-action="GotoAction" anchor="after"/>
+            </action>
+
+            <action class="glacier.popups.AboutPingMenuItem" id="Plugin.Demo.Ping.About" text="About"
+                    description="About Ping">
+                <add-to-group group-id="ConsoleEditorPopupMenu" anchor="after"
+                              relative-to-action="Plugin.Demo.Ping.Stop"/>
+            </action>
+
+            <action class="glacier.popups.GeneratePopup" id="Plugin.Demo.Ping.Ping" text="Ping"
+                    description="Plugin Demo">
+                <add-to-group group-id="GenerateGroup"/>
+            </action>
+
+            <action id="Plugin.Demo.Ping.AllAction" class="glacier.popups.ActionGroupPopup"
+                    text="AllAction In Ping">
+                <keyboard-shortcut first-keystroke="control alt P" keymap="$default"/>
+            </action>
+        </group>
+    </actions>
+</idea-plugin>
